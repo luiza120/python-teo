@@ -30,9 +30,12 @@ def escolhe_opcao():
       def cadastra_fotografo():
             exibir_subtitulo('Cadastrar fotografo')
 
-            nome_fotografo = input('Digite o nome do fotógrafo que deseja cadastrar:')
-            fotografos.append(nome_fotografo)
+            nome_fotografo = input('Digite o nome do(a) fotógrafo que deseja cadastrar:')
+            categoria_fotografo = input(f'Digite a categoria que o {nome_fotografo} vai atuar:')
+            dados_df = {'nome': nome_fotografo, 'categoria': categoria_fotografo, 'ativo': True}
+            fotografos.append(dados_df)
             print(f'O fotógrafo {nome_fotografo} foi cadastrado com sucesso\n')
+
             retorna_menu()
 
       def listar_clientes():
