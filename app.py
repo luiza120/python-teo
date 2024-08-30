@@ -18,7 +18,7 @@ def mostra_escolhas():
 def escolhe_opcao():
 
       def exibir_subtitulo(texto):
-            os.system('cls')
+            os.system('clear')
             print(texto)
             print('')
 
@@ -48,8 +48,22 @@ def escolhe_opcao():
                   print(f' - {nome_fotografo} | {categoria_fotografo} | {ativo}')
             retorna_menu()
 
+      def ativar_fotografo():
+            exibir_subtitulo('Ativar fotografo')
+            nome_fotografo = input('Digite o nome do fotografo que deseja ativar:')
+            fotografo_encontrado = False
+
+            for fotografo in fotografos:
+                  if nome_fotografo == fotografo['fotografo']:
+                        fotografo_encontrado = True
+                        fotografo['ativo'] = not fotografo ['ativo']
+                        mensagem = f'O cadastro do {nome_fotografo} foi ativado com sucesso'if fotografo['ativo'] else f'O cadastro {nome_fotografo} foi desativado'
+                        print(mensagem)
+            if not fotografo_encontrado:
+                  print('Não encontrado') 
+
       def finalizar_programa():
-            os.system('cls')
+            os.system('clear')
             print('Finalizando o programa\n')
 
       def opcao_invalida():
