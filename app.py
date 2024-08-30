@@ -18,8 +18,11 @@ def mostra_escolhas():
 def escolhe_opcao():
 
       def exibir_subtitulo(texto):
-            os.system('clear')
+            os.system('cls')
+            linha = '-' * len(texto)
+            print(linha)
             print(texto)
+            print(linha)
             print('')
 
       def retorna_menu():
@@ -44,8 +47,9 @@ def escolhe_opcao():
             for fotografo in fotografos:
                   nome_fotografo = fotografo['nome']
                   categoria_fotografo = fotografo['categoria']
-                  ativo = fotografo['ativo']
-                  print(f' - {nome_fotografo} | {categoria_fotografo} | {ativo}')
+                  ativo = 'Ativo' if fotografo['ativo'] else 'Desativado'
+                  print(f' - {nome_fotografo.ljust(20)} | {categoria_fotografo.ljust(20)} | {ativo}')
+                  print()
             retorna_menu()
 
       def ativar_fotografo():
@@ -54,16 +58,17 @@ def escolhe_opcao():
             fotografo_encontrado = False
 
             for fotografo in fotografos:
-                  if nome_fotografo == fotografo['fotografo']:
+                  if nome_fotografo == fotografo['nome']:
                         fotografo_encontrado = True
                         fotografo['ativo'] = not fotografo ['ativo']
                         mensagem = f'O cadastro do {nome_fotografo} foi ativado com sucesso'if fotografo['ativo'] else f'O cadastro {nome_fotografo} foi desativado'
                         print(mensagem)
             if not fotografo_encontrado:
                   print('Não encontrado') 
+            retorna_menu()
 
       def finalizar_programa():
-            os.system('clear')
+            os.system('cls')
             print('Finalizando o programa\n')
 
       def opcao_invalida():
@@ -79,7 +84,7 @@ def escolhe_opcao():
             elif opcao_escolhida == 2:
                   listar_clientes()
             elif opcao_escolhida == 3:
-                  print('Você escolheu Ativar Agenda')
+                  ativar_fotografo()
             elif opcao_escolhida == 4:
                   finalizar_programa()
             else:
